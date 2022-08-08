@@ -33,4 +33,8 @@ class Market
     end
   end
 
+  def sorted_item_list
+    unique_items.map(&:name).sort
+  end
+
 end
