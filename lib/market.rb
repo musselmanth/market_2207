@@ -41,4 +41,8 @@ class Market
     total_inventory[item][:vendors].length > 1 && total_inventory[item][:quantity] > 50
   end
 
+  def overstocked_items
+    unique_items.find_all{ |item| overstocked?(item) }
+  end
+
 end

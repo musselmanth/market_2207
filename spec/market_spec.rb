@@ -85,7 +85,7 @@ RSpec.describe Market do
       expect(market.overstocked?(item2)).to be false
     end
 
-    xit 'can return a list of overstocked items' do
+    it 'can return a list of overstocked items' do
       expect(market.overstocked_items).to eq([item1])
     end
 
