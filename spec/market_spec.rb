@@ -76,6 +76,10 @@ RSpec.describe Market do
       expect(market.total_inventory).to eq(expected)
     end
 
+    it 'can return an alphabetical list of items' do
+      expect(market.sorted_item_list).to eq(["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"])
+    end
+
   end
 
 end
