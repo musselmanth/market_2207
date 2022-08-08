@@ -25,4 +25,11 @@ RSpec.describe Market do
     expect(market.vendors).to eq([])
   end
 
+  it 'can add vendors' do
+    market.add_vendor(vendor1)
+    market.add_vendor(vendor2)
+    market.add_vendor(vendor3)
+    expect(market.vendors).to eq([vendor1, vendor2, vendor3])
+  end
+
 end
