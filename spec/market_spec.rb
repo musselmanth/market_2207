@@ -94,6 +94,15 @@ RSpec.describe Market do
       expect(market.overstocked_items).to eq([item1])
     end
 
+    it 'can sell items properly' do
+      expect(market.sell(item1, 200)).to be false
+      expect(market.sell(item4, 5)).to be true
+      expect(vendor2.check_stock(item4)).to eq(45)
+      expect(market.sell(item1, 40)).to be true
+      expect(vendor1.check_stock(item1)).to eq(0)
+      expect(vendor3.check_stock(item1)).to eq(60)
+    end
+
   end
 
 end
