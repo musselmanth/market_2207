@@ -37,4 +37,8 @@ class Market
     unique_items.map(&:name).sort
   end
 
+  def overstocked?(item)
+    total_inventory[item][:vendors].length > 1 && total_inventory[item][:quantity] > 50
+  end
+
 end
