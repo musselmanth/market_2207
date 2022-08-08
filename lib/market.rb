@@ -19,4 +19,8 @@ class Market
     @vendors.find_all{ |vendor| vendor.inventory.keys.include?(item) }
   end
 
+  def unique_items
+    @vendors.flat_map{ |vendor| vendor.inventory.keys }.uniq
+  end
+
 end

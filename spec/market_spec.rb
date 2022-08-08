@@ -14,8 +14,8 @@ RSpec.describe Market do
   before(:each) do
     vendor1.stock(item1, 35)
     vendor1.stock(item2, 7)
-    vendor2.stock(item4, 50)
     vendor2.stock(item3, 25)
+    vendor2.stock(item4, 50)
     vendor3.stock(item1, 65)
     vendor3.stock(item3, 10)
   end
@@ -67,7 +67,7 @@ RSpec.describe Market do
           quantity: 50,
           vendors: [vendor2, vendor3]
         },
-        item3 => {
+        item4 => {
           quantity: 35,
           vendors: [vendor2]
         }
