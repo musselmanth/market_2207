@@ -80,7 +80,12 @@ RSpec.describe Market do
       expect(market.sorted_item_list).to eq(["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"])
     end
 
-    it 'can return a list of overstocked items' do
+    it 'can tell if one item is overstocked' do
+      expect(market.overstocked?(item1)).to be true
+      expect(market.overstocked?(item2)).to be false
+    end
+
+    xit 'can return a list of overstocked items' do
       expect(market.overstocked_items).to eq([item1])
     end
 
