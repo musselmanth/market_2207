@@ -24,12 +24,12 @@ class Market
   end
 
   def total_inventory
-    unique_items.to_h do |item|
-      value = {
+    unique_items.inject({}) do |inventory, item|
+      inventory[item] = {
         quantity: @vendors.sum{ |vendor| vendor.check_stock(item)},
         vendors: vendors_that_sell(item)
       }
-      [item, value]
+      inventory
     end
   end
 
