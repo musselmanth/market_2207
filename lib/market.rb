@@ -46,4 +46,22 @@ class Market
     unique_items.find_all{ |item| overstocked?(item) }
   end
 
+  def sell(item, qty)
+    able_to_sell = unique_items.include?(item) && total_inventory[item][:quantity] >= qty
+    reduce_stocks(item, qty) if able_to_sell
+    able_to_sell
+  end
+
+  def reduce_stocks(item, qty)
+    vendors_that_sell(item).each do |vendor|
+      if vendor.inventory[item] >= qty
+        vendor.inventory[item] -= qty
+        qty = 0
+      else
+        qty -= vendor.inventory[item]
+        vendor.inventory[item] = 0
+      end
+    end
+  end
+
 end
