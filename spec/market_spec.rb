@@ -49,7 +49,11 @@ RSpec.describe Market do
       expect(market.vendors_that_sell(item4)).to eq([vendor2])
     end
 
-    it 'can return totaly inventory hash' do
+    it 'can return an array of unique items sold' do
+      expect(market.unique_items).to eq([item1, item2, item3, item4])
+    end
+
+    xit 'can return totaly inventory hash' do
       expected = {
         item1 => {
           quantity: 100,
