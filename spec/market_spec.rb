@@ -17,6 +17,7 @@ RSpec.describe Market do
     vendor2.stock(item4, 50)
     vendor2.stock(item3, 25)
     vendor3.stock(item1, 65)
+    vendor3.stock(item3, 10)
   end
 
   it 'exists and has attributes' do
@@ -46,6 +47,29 @@ RSpec.describe Market do
     it 'can return a list of vendors that sell a particular item' do
       expect(market.vendors_that_sell(item1)).to eq([vendor1, vendor3])
       expect(market.vendors_that_sell(item4)).to eq([vendor2])
+    end
+
+    it 'can return totaly inventory hash' do
+      expected = {
+        item1 => {
+          quantity: 100,
+          vendors: [vendor1, vendor3]
+        },
+        item2 => {
+          quantity: 7,
+          vendors: [vendor1]
+        },
+        item3 => {
+          quantity: 50,
+          vendors: [vendor2, vendor3]
+        },
+        item3 => {
+          quantity: 35,
+          vendors: [vendor2]
+        }
+      }
+       
+      expect(market.total_inventory).to eq(expected)
     end
 
   end
