@@ -14,8 +14,8 @@ RSpec.describe Market do
   before(:each) do
     vendor1.stock(item1, 35)
     vendor1.stock(item2, 7)
-    vendor2.stock(item3, 25)
     vendor2.stock(item4, 50)
+    vendor2.stock(item3, 25)
     vendor3.stock(item1, 65)
     vendor3.stock(item3, 10)
   end
@@ -50,10 +50,10 @@ RSpec.describe Market do
     end
 
     it 'can return an array of unique items sold' do
-      expect(market.unique_items).to eq([item1, item2, item3, item4])
+      expect(market.unique_items).to eq([item1, item2, item4, item3])
     end
 
-    xit 'can return totaly inventory hash' do
+    it 'can return totaly inventory hash' do
       expected = {
         item1 => {
           quantity: 100,
@@ -63,16 +63,16 @@ RSpec.describe Market do
           quantity: 7,
           vendors: [vendor1]
         },
-        item3 => {
-          quantity: 50,
-          vendors: [vendor2, vendor3]
-        },
         item4 => {
-          quantity: 35,
+          quantity: 50,
           vendors: [vendor2]
+        },
+        item3 => {
+          quantity: 35,
+          vendors: [vendor2, vendor3]
         }
       }
-       
+
       expect(market.total_inventory).to eq(expected)
     end
 

@@ -23,4 +23,14 @@ class Market
     @vendors.flat_map{ |vendor| vendor.inventory.keys }.uniq
   end
 
+  def total_inventory
+    unique_items.to_h do |item|
+      value = {
+        quantity: @vendors.sum{ |vendor| vendor.check_stock(item)},
+        vendors: vendors_that_sell(item)
+      }
+      [item, value]
+    end
+  end
+
 end
