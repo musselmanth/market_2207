@@ -1,6 +1,8 @@
 class Market
 
-  attr_reader :name, :vendors, :date
+  attr_reader :name, 
+              :vendors,
+              :date
 
   def initialize(name)
     @name = name
@@ -47,9 +49,9 @@ class Market
   end
 
   def sell(item, qty)
-    able_to_sell = unique_items.include?(item) && total_inventory[item][:quantity] >= qty
-    reduce_stocks(item, qty) if able_to_sell
-    able_to_sell
+    is_able_to_sell = unique_items.include?(item) && total_inventory[item][:quantity] >= qty
+    reduce_stocks(item, qty) if is_able_to_sell
+    is_able_to_sell
   end
 
   def reduce_stocks(item, qty)
